@@ -24,7 +24,7 @@ SEED = 42
 tf.random.set_seed(SEED)
 np.random.seed(SEED)
 
-songs_path = './data/lmd-full_MIDI_dataset/Sentence_and_Word_Parsing'
+songs_path = 'lyrics-generation/data/Sentence_and_Word_Parsing'
 # songs_path = './data/lmd-full_MIDI_dataset/Syllable_Parsing'
 songs = os.listdir(songs_path)
 
@@ -242,7 +242,7 @@ sequences_rest = np.expand_dims(sequences_rest, axis=2)
 
 sequences = np.concatenate([sequences_syllable, sequences_note, sequences_duration, sequences_rest], axis=2)
 
-data_folder = './data/sentence_level_concat_100'
+data_folder = 'lyrics-generation/data/syllable_and_word_100'
 
 tokenizer_folder = os.path.join(data_folder, 'tokenizers')
 
@@ -276,7 +276,7 @@ def save_tokenizer(file, tokenizer):
     with open(file, 'wb') as handle:
         pickle.dump({'tokenizer': tokenizer}, handle)
 
-save_tokenizer(os.path.join(tokenizer_folder, 'tokenizer_lyr.pkl'), tokenizer_syllable)
+save_tokenizer(os.path.join(tokenizer_folder, 'tokenizer_syllable.pkl'), tokenizer_syllable)
 save_tokenizer(os.path.join(tokenizer_folder, 'tokenizer_note.pkl'), tokenizer_note)
 save_tokenizer(os.path.join(tokenizer_folder, 'tokenizer_duration.pkl'), tokenizer_duration)
 save_tokenizer(os.path.join(tokenizer_folder, 'tokenizer_rest.pkl'), tokenizer_rest)
